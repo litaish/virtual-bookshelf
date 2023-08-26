@@ -1,8 +1,3 @@
-
 export const BookView = () => {
-  return (
-    <div>
-      BookView
-    </div>
-  )
+  return <div>BookView</div>;
 };

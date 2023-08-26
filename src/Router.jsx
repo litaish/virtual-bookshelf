@@ -1,42 +1,49 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import App from "./App.jsx";
-import { UserBooks, AddBook, Login, Signup, Book, Error } from './pages/index.js';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import App from './App.jsx';
+import {
+  UserBooks,
+  AddBook,
+  Login,
+  Signup,
+  Book,
+  Error,
+} from './pages/index.js';
 
 const Router = () => {
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: '/',
       element: <App />,
       errorElement: <Error.ErrorView />,
       children: [
         {
-          path: "login",
+          path: 'login',
           element: <Login.LoginView />,
         },
         {
-          path: "books",
+          path: 'books',
           element: <UserBooks.UserBooksView />,
         },
         {
-          path: "add",
+          path: 'add',
           element: <AddBook.AddBookView />,
         },
         {
-          path: "login",
+          path: 'login',
           element: <Login.LoginView />,
         },
         {
-          path: "signup",
+          path: 'signup',
           element: <Signup.SignupView />,
         },
         {
-          path: "book/:id",
+          path: 'book/:id',
           element: <Book.BookView />,
         },
-      ]
-    }
+      ],
+    },
   ]);
-  return <RouterProvider router={router} />
-}
+  return <RouterProvider router={router} />;
+};
 
 export default Router;

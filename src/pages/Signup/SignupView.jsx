@@ -1,8 +1,3 @@
-
 export const SignupView = () => {
-  return (
-    <div>
-      SignupView
-    </div>
-  )
+  return <div>SignupView</div>;
 };

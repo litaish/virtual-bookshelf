@@ -1,4 +1,4 @@
-import { useRouteError } from "react-router-dom";
+import { useRouteError } from 'react-router-dom';
 
 export const ErrorView = () => {
   const error = useRouteError();
@@ -12,4 +12,4 @@ export const ErrorView = () => {
       </p>
     </div>
   );
-}
+};
