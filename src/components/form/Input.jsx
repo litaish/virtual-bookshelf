@@ -2,6 +2,7 @@ import { useFormContext } from "react-hook-form";
 import { InputError } from "./InputError";
 import { AnimatePresence } from "framer-motion"
 import { findInputError, isFormInvalid } from "../../utils";
+import PropTypes from 'prop-types';
 
 export const Input = ({ label, type, id, placeholder, validation, name }) => {
     const {
@@ -38,3 +39,12 @@ export const Input = ({ label, type, id, placeholder, validation, name }) => {
         </div>
     );
 };
+
+Input.propTypes = {
+    label: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    placeholder: PropTypes.string,
+    validation: PropTypes.object,
+    name: PropTypes.string.isRequired,
+}

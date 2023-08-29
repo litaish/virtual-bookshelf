@@ -34,11 +34,25 @@ export const name_validation = {
     },
   }
   
-  export const password_validation = {
-    name: 'password',
+  export const password_login_validation = {
+    name: 'login_password',
     label: 'Password',
     type: 'password',
-    id: 'password',
+    id: 'login_password',
+    placeholder: 'Type password ...',
+    validation: {
+      required: {
+        value: true,
+        message: 'required',
+      },
+    },
+  }
+
+  export const password_signup_validation = {
+    name: 'signup_password',
+    label: 'Password',
+    type: 'password',
+    id: 'signup_password',
     placeholder: 'Type password ...',
     validation: {
       required: {
@@ -48,6 +62,24 @@ export const name_validation = {
       minLength: {
         value: 6,
         message: 'min 6 characters',
+      },
+      pattern: {
+        value: /(?=.*?[0-9])/,
+        message: 'must contain at least one digit',
+      }
+    },
+  }
+
+  export const password_confirm_validation = {
+    name: 'confirm_password',
+    label: 'Confirm password',
+    type: 'password',
+    id: 'confirm_password',
+    placeholder: 'Type password again ...',
+    validation: {
+      required: {
+        value: true,
+        message: 'required',
       },
     },
   }

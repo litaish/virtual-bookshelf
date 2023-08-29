@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export const AuthButton = ({ text, handleSubmit }) => {
   return (
     <button
@@ -7,4 +9,9 @@ export const AuthButton = ({ text, handleSubmit }) => {
       {text}
     </button>
   );
+};
+
+AuthButton.propTypes = {
+  text: PropTypes.string.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
 };

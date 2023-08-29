@@ -1,11 +1,11 @@
 import logo_modern from '../../assets/vb_modern.png';
 import { Input } from '../../components/form';
 import { AuthButton } from '../../components/buttons/AuthButton';
-import { email_validation, password_login_validation } from '../../utils';
+import { email_validation, password_confirm_validation, password_signup_validation } from '../../utils';
 import { Link } from 'react-router-dom';
 import { FormProvider, useForm } from 'react-hook-form';
 
-export const LoginForm = () => {
+export const SignupForm = () => {
     const methods = useForm();
 
     const handleSubmit = methods.handleSubmit(data => {
@@ -14,6 +14,12 @@ export const LoginForm = () => {
         // Navigate to My Books
 
     });
+
+    // Extra validation rule
+    const validatePasswordMatch = (match) => {
+        const password = methods.getValues('signup_password');
+        return match === password || 'passwords should match';
+    };
 
     return (
         <FormProvider {...methods}>
@@ -26,20 +32,21 @@ export const LoginForm = () => {
                     <img src={logo_modern} alt="Virtual Bookshelf logo" />
                 </div>
                 <div className='flex flex-col gap-4'>
-                    <Input {...email_validation}/>
-                    <Input {...password_login_validation}/>
+                    <Input {...email_validation} />
+                    <Input {...password_signup_validation} />
+                    <Input {...password_confirm_validation} validation={{ validate: validatePasswordMatch }} />
                 </div>
                 <AuthButton
                     handleSubmit={handleSubmit}
-                    text='Login'
+                    text='Signup'
                 />
                 <div className='text-center mt-6 text-xl text-gray-900 md:text-2xl'>
-                    Don&apos;t have an account?
+                    Already have an account?
                     <Link
-                        to='/signup'
+                        to='/login'
                         className='ml-2 font-semibold text-emerald-600'
                     >
-                        Sign up
+                        Login
                     </Link>
                 </div>
             </form>
