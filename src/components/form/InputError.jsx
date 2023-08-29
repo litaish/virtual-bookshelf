@@ -1,5 +1,17 @@
-export const InputError = () => {
-  return <div>error</div>;
+import { motion } from "framer-motion"
+import Icon from '@mdi/react';
+import { mdiAlertCircle } from '@mdi/js';
+
+export const InputError = ({ message }) => {
+  return (
+    <motion.p
+      className="flex items-center gap-1 px-2 font-semibold text-red-500 bg-red-100 rounded-md"
+      {...framer_error}
+    >
+      <Icon path={mdiAlertCircle} size={1.5} />
+      {message}
+    </motion.p>
+  );
 };
 
 const framer_error = {
