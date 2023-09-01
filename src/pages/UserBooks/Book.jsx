@@ -14,20 +14,24 @@ export const Book = ({ imgSrc, id, title, authors, rating, isRead }) => {
           <img className='rounded-md mb-2' src={imgSrc} alt={`${title} `} />
         </Link>
         <p className='text-gray-800 text-xl font-medium'>{title}</p>
+
         {authors.map((author) => {
           return <p key={author.name} className='text-xl text-gray-600'>{author.name}</p>;
         })}
+
         <Rating
           value={rating}
           readOnly={true}
           style={{ maxWidth: 80 }}
         />
       </div>
+
       {isRead && (
-        <div className={`${styles.read_icon} text-green-600`}>
+        <div className={`${styles.read_icon} text-green-800`}>
           <Icon path={mdiCheckCircle} size={2} />
         </div>
       )}
+      
     </div>
   )
 };

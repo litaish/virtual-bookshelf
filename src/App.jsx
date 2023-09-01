@@ -1,5 +1,8 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import { Navbar } from './components/layout';
+import { QueryClientProvider, QueryClient } from 'react-query';
+
+const queryClient = new QueryClient();
 
 const App = () => {
   const pathName = useLocation().pathname;
@@ -18,9 +21,11 @@ const App = () => {
     </>
   );
   return (
-    <div className="min-h-screen">
-      {['/', '/login', '/signup'].includes(pathName) ? authView : regularView}
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <div className="min-h-screen">
+        {['/', '/login', '/signup'].includes(pathName) ? authView : regularView}
+      </div>
+    </QueryClientProvider>
   );
 };
 export default App;

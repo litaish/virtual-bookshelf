@@ -1,1 +1,0 @@
-export * as BooksProvider from './BooksContext';
