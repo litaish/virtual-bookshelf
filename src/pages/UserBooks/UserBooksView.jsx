@@ -20,16 +20,16 @@ export const UserBooksView = () => {
 
       {isLoading && (
         <div className="flex justify-center items-center mt-20">
-          <UI.LoadingSpinner />
+          <UI.LoadingSpinner className='w-14 h-14'/>
         </div>
       )}
 
       {isError && (
-        <div>An error has occured while fetching books - {error.message}</div>
+        <UI.ErrorAlert errorMessage={error.message}/>
       )}
 
       {data?.data.length === 0 && (
-        <div>No books seem to be added...</div>
+        <UserBooks.NoBooksAlert />
       )}
 
       <div className={`${styles.grid_books} mt-8`}>
