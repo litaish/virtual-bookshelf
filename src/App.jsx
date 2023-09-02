@@ -1,6 +1,7 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import { Navbar } from './components/layout';
 import { QueryClientProvider, QueryClient } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ const App = () => {
       <div className="min-h-screen">
         {['/', '/login', '/signup'].includes(pathName) ? authView : regularView}
       </div>
+      <ReactQueryDevtools initialIsOpen={false} position='bottom-right'/>
     </QueryClientProvider>
   );
 };

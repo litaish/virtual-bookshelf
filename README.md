@@ -15,3 +15,9 @@ Currently, two official plugins are available:
 - Framer Motion
 - JSON Server (for mock API)
 - React Query
+
+### Todo:
+- Fix layout in books page (margins)
+- Fix layout in larger screen sizes for books page
+- Add flexible margins for books page elements with twMerge
+- Add search bar for books
