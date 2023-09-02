@@ -17,12 +17,12 @@ export const UserBooksView = () => {
   });
 
   return (
-    <main className="p-8">
+    <main className="p-8 flex flex-col gap-8">
       <Buttons.PrimaryButton text='Add new book' icon={<Icon path={mdiPlus} size={1.5} />} />
-      <UI.Header text='My Books' bookCount={data?.data.length} className='mt-4' />
+      <UI.Header text='My Books' bookCount={data?.data.length} />
 
       {isLoading && (
-        <div className="flex justify-center items-center mt-20">
+        <div className="flex justify-center items-center mt-32">
           <UI.LoadingSpinner className='w-14 h-14' />
         </div>
       )}
@@ -32,13 +32,13 @@ export const UserBooksView = () => {
       )}
 
       {data?.data.length === 0 && (
-        <UserBooks.NoBooksAlert className='mt-16'/>
+        <UserBooks.NoBooksAlert />
       )}
 
       {data?.data.length > 0 && (
           <>
           <Form.SearchInput label='Search' placeholder='Search For A Book Title ...' onChange={handleSearchChange}/>
-              <div className={`${styles.grid_books} mt-8`}>
+              <div className={`${styles.grid_books}`}>
                 {data?.data.filter((item) => {
                   return search.toLowerCase() === '' ? item : item.title.toLowerCase().includes(search.toLowerCase())
                 }).map((book) => {
