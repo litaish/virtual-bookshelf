@@ -9,7 +9,7 @@ import { useState } from "react";
 
 export const UserBooksView = () => {
   const [search, setSearch] = useState('');
-  
+
   const handleSearchChange = e => setSearch(e.target.value);
 
   const { isLoading, data, isError, error } = useQuery('books', () => {
@@ -40,7 +40,7 @@ export const UserBooksView = () => {
           <Form.SearchInput label='Search' placeholder='Search For A Book Title ...' onChange={handleSearchChange}/>
               <div className={`${styles.grid_books} mt-8`}>
                 {data?.data.filter((item) => {
-                  return search.toLowerCase() === '' ? item : item.title.toLowerCase().includes(search)
+                  return search.toLowerCase() === '' ? item : item.title.toLowerCase().includes(search.toLowerCase())
                 }).map((book) => {
                   return (
                     <UserBooks.Book key={book.id} id={book.id} title={book.title} authors={book.authors} rating={book.rating} isRead={book.isRead} imgSrc={book.imgSrc} />

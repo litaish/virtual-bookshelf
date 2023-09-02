@@ -20,4 +20,3 @@ Currently, two official plugins are available:
 - Fix layout in books page (margins)
 - Fix layout in larger screen sizes for books page
 - Add flexible margins for books page elements with twMerge
-- Add search bar for books
