@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"
+import { motion } from 'framer-motion';
 import Icon from '@mdi/react';
 import { mdiAlertCircle } from '@mdi/js';
 import PropTypes from 'prop-types';
@@ -24,4 +24,4 @@ const framer_error = {
 
 InputError.propTypes = {
   message: PropTypes.string.isRequired,
-}
+};

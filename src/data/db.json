@@ -1,61 +1,61 @@
 {
-    "books": [
-      {
-        "id": "1",
-        "ISBN": "978-0-14-243731-5",
-        "title": "Harry Potter: Exploring Hogwarts",
-        "authors": [
-          {
-            "name": "Jody Revenson"
-          }
-        ],
-        "genres": [
-          {
-            "name": "fantasy"
-          }
-        ],
-        "rating": 4,
-        "isRead": false,
-        "imgSrc": "https://books.google.lv/books/publisher/content?id=vnbgDwAAQBAJ&hl=lv&pg=PA4&img=1&zoom=3&bul=1&sig=ACfU3U1lRTcuSZw36QN296qN1nN4VvWxdg&w=1280"
-      },
-      {
-        "id": "2",
-        "ISBN": "978-1-250-09524-8",
-        "title": "The Fault in Our Stars",
-        "authors": [
-          {
-            "name": "John Green"
-          },
-          {
-            "name": "Bob Test"
-          }
-        ],
-        "genres": [
-          {
-            "name": "mystery"
-          }
-        ],
-        "rating": 5,
-        "isRead": true,
-        "imgSrc": "https://books.google.lv/books/publisher/content?id=QiLaCwAAQBAJ&hl=lv&pg=PP1&img=1&zoom=3&bul=1&sig=ACfU3U0Eg52YAj5RGqdOGhQuUvybwddtbQ&w=1280"
-      },
-      {
-        "id": "3",
-        "ISBN": "978-0-06-112008-4",
-        "title": "Moby Dick",
-        "authors": [
-          {
-            "name": "Herman. Melville"
-          }
-        ],
-        "genres": [
-          {
-            "name": "science fiction"
-          }
-        ],
-        "rating": 4,
-        "isRead": false,
-        "imgSrc": "https://books.google.lv/books/publisher/content?id=VetpDAAAQBAJ&hl=lv&pg=PP1&img=1&zoom=3&bul=1&sig=ACfU3U3tULyENNdchnzaie2ZWwHSb80twg&w=1280"
-      }
-    ]
-  }
+  "books": [
+    {
+      "id": "1",
+      "ISBN": "978-0-14-243731-5",
+      "title": "Harry Potter: Exploring Hogwarts",
+      "authors": [
+        {
+          "name": "Jody Revenson"
+        }
+      ],
+      "genres": [
+        {
+          "name": "fantasy"
+        }
+      ],
+      "rating": 4,
+      "isRead": false,
+      "imgSrc": "https://books.google.lv/books/publisher/content?id=vnbgDwAAQBAJ&hl=lv&pg=PA4&img=1&zoom=3&bul=1&sig=ACfU3U1lRTcuSZw36QN296qN1nN4VvWxdg&w=1280"
+    },
+    {
+      "id": "2",
+      "ISBN": "978-1-250-09524-8",
+      "title": "The Fault in Our Stars",
+      "authors": [
+        {
+          "name": "John Green"
+        },
+        {
+          "name": "Bob Test"
+        }
+      ],
+      "genres": [
+        {
+          "name": "mystery"
+        }
+      ],
+      "rating": 5,
+      "isRead": true,
+      "imgSrc": "https://books.google.lv/books/publisher/content?id=QiLaCwAAQBAJ&hl=lv&pg=PP1&img=1&zoom=3&bul=1&sig=ACfU3U0Eg52YAj5RGqdOGhQuUvybwddtbQ&w=1280"
+    },
+    {
+      "id": "3",
+      "ISBN": "978-0-06-112008-4",
+      "title": "Moby Dick",
+      "authors": [
+        {
+          "name": "Herman. Melville"
+        }
+      ],
+      "genres": [
+        {
+          "name": "science fiction"
+        }
+      ],
+      "rating": 4,
+      "isRead": false,
+      "imgSrc": "https://books.google.lv/books/publisher/content?id=VetpDAAAQBAJ&hl=lv&pg=PP1&img=1&zoom=3&bul=1&sig=ACfU3U3tULyENNdchnzaie2ZWwHSb80twg&w=1280"
+    }
+  ]
+}

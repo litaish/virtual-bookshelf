@@ -9,5 +9,5 @@ export const SignupView = () => {
     >
       <SignupForm />
     </div>
-  )
+  );
 };

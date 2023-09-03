@@ -26,7 +26,7 @@ const App = () => {
       <div className="min-h-screen">
         {['/', '/login', '/signup'].includes(pathName) ? authView : regularView}
       </div>
-      <ReactQueryDevtools initialIsOpen={false} position='bottom-right'/>
+      <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
     </QueryClientProvider>
   );
 };

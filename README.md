@@ -8,6 +8,7 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 ### Built using:
+
 - React
 - Tailwind
 - CSS Modules
@@ -17,6 +18,7 @@ Currently, two official plugins are available:
 - React Query
 
 ### Todo:
+
 - Fix layout in books page (margins)
 - Fix layout in larger screen sizes for books page
 - Add flexible margins for books page elements with twMerge
