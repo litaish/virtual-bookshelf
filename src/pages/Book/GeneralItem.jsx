@@ -1,8 +1,5 @@
 import PropTypes from 'prop-types';
 
-// If value is an array, this function is used to return all object name property values into one string
-const extractArrayNameValues = arr => arr.map(item => item.name).join();
-
 export const GeneralItem = ({ title, value }) => {
   return (
     <div>
@@ -10,7 +7,8 @@ export const GeneralItem = ({ title, value }) => {
       {/* Logic to display multiple items or just a single item based on if value is an array or not */}
       {Array.isArray(value) ? (
         <p className="text-gray-600 text-xl capitalize">
-          {extractArrayNameValues(value)}
+          { /* If value is an array, return an array of name property values and join them with comma */}
+          {value.map((item) => item.name).join()}
         </p>
       ) : (
         <p className="text-gray-600 text-xl capitalize">{value}</p>

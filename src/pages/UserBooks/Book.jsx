@@ -18,13 +18,10 @@ export const Book = ({ book }) => {
         </Link>
         <p className="text-gray-800 text-xl font-medium">{book.title}</p>
 
-        {book.authors.map(author => {
-          return (
-            <p key={author.name} className="text-xl text-gray-600">
-              {author.name}
-            </p>
-          );
-        })}
+        <p className="text-xl text-gray-600">
+          { /* Return an array of name property values and join them with comma */}
+          {book.authors.map((author) => author.name).join()}
+        </p>
 
         <Rating value={book.rating} readOnly={true} style={{ maxWidth: 80 }} />
       </div>
