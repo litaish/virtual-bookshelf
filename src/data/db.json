@@ -2,10 +2,16 @@
     "books": [
       {
         "id": "1",
+        "ISBN": "978-0-14-243731-5",
         "title": "Harry Potter: Exploring Hogwarts",
         "authors": [
           {
             "name": "Jody Revenson"
+          }
+        ],
+        "genres": [
+          {
+            "name": "fantasy"
           }
         ],
         "rating": 4,
@@ -14,10 +20,19 @@
       },
       {
         "id": "2",
+        "ISBN": "978-1-250-09524-8",
         "title": "The Fault in Our Stars",
         "authors": [
           {
             "name": "John Green"
+          },
+          {
+            "name": "Bob Test"
+          }
+        ],
+        "genres": [
+          {
+            "name": "mystery"
           }
         ],
         "rating": 5,
@@ -26,10 +41,16 @@
       },
       {
         "id": "3",
+        "ISBN": "978-0-06-112008-4",
         "title": "Moby Dick",
         "authors": [
           {
             "name": "Herman. Melville"
+          }
+        ],
+        "genres": [
+          {
+            "name": "science fiction"
           }
         ],
         "rating": 4,

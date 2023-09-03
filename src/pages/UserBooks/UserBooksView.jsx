@@ -1,4 +1,4 @@
-import { Buttons, UI, Form } from "../../components/index";
+import { Buttons, UI, Form, Layout } from "../../components/index";
 import { UserBooks } from "../index";
 import Icon from '@mdi/react';
 import { mdiPlus } from '@mdi/js';
@@ -18,8 +18,8 @@ export const UserBooksView = () => {
 
   return (
     <main className="p-8 flex flex-col gap-8">
-      <Buttons.PrimaryButton text='Add new book' icon={<Icon path={mdiPlus} size={1.5} />} />
-      <UI.Header text='My Books' bookCount={data?.data.length} />
+      <Buttons.ActionButton text='Add new book' icon={<Icon path={mdiPlus} size={1.5} />} />
+      <Layout.Header text='My Books' bookCount={data?.data.length} />
 
       {isLoading && (
         <div className="flex justify-center items-center mt-32">
@@ -43,7 +43,7 @@ export const UserBooksView = () => {
                   return search.toLowerCase() === '' ? item : item.title.toLowerCase().includes(search.toLowerCase())
                 }).map((book) => {
                   return (
-                    <UserBooks.Book key={book.id} id={book.id} title={book.title} authors={book.authors} rating={book.rating} isRead={book.isRead} imgSrc={book.imgSrc} />
+                    <UserBooks.Book key={book.ISBN} book={book} />
                   )
                 })}
               </div>
