@@ -18,10 +18,10 @@ export const name_validation = {
 
 export const desc_validation = {
   name: 'description',
-  label: 'description',
+  label: 'Write notes for book',
   multiline: true,
   id: 'description',
-  placeholder: 'write description ...',
+  placeholder: 'Write note ...',
   validation: {
     required: {
       value: true,
