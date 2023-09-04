@@ -7,7 +7,12 @@ export const Notes = () => {
         Notes
       </h2>
       <div>
-        <Form.Textarea label='Notes For Book' id='notes_textarea' name='notes_textarea' placeholder='Write your notes ...'/>
+        <Form.Textarea
+          label="Notes For Book"
+          id="notes_textarea"
+          name="notes_textarea"
+          placeholder="Write your notes ..."
+        />
       </div>
     </section>
   );

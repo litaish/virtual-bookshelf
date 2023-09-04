@@ -7,8 +7,8 @@ export const GeneralItem = ({ title, value }) => {
       {/* Logic to display multiple items or just a single item based on if value is an array or not */}
       {Array.isArray(value) ? (
         <p className="text-gray-600 text-xl capitalize">
-          { /* If value is an array, return an array of name property values and join them with comma */}
-          {value.map((item) => item.name).join()}
+          {/* If value is an array, return an array of name property values and join them with comma */}
+          {value.map(item => item.name).join()}
         </p>
       ) : (
         <p className="text-gray-600 text-xl capitalize">{value}</p>
