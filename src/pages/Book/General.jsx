@@ -4,12 +4,8 @@ import PropTypes from 'prop-types';
 import Icon from '@mdi/react';
 import { mdiRead, mdiBookRemoveMultiple } from '@mdi/js';
 
-export const General = ({ book, setModal }) => {
+export const General = ({ book, onRemoveClick }) => {
   const changeReadStatusText = book.isRead ? 'Mark as unread' : 'Mark as read';
-
-  const handleRemoveClick = () => {
-    setModal({ show: true, title: "Delete this book?", text: "This book will be permenetly deleted." })
-  }
 
   return (
     <section className="flex flex-col gap-6">
@@ -38,7 +34,7 @@ export const General = ({ book, setModal }) => {
           icon={<Icon path={mdiRead} size={1.2} />}
         />
         <Buttons.ActionButton
-          onClick={handleRemoveClick}
+          onClick={onRemoveClick}
           text="Remove"
           className="bg-red-500 hover:bg-red-600"
           icon={<Icon path={mdiBookRemoveMultiple} size={1.4} />}
@@ -50,5 +46,5 @@ export const General = ({ book, setModal }) => {
 
 General.propTypes = {
   book: PropTypes.object.isRequired,
-  setModal: PropTypes.func,
+  onRemoveClick: PropTypes.func,
 };
