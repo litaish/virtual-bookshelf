@@ -5,6 +5,8 @@ import Icon from '@mdi/react';
 import { mdiRead, mdiBookRemoveMultiple } from '@mdi/js';
 
 export const General = ({ book }) => {
+  const changeReadStatusText = book.isRead ? 'Mark as unread' : 'Mark as read';
+
   return (
     <section className="flex flex-col gap-6">
       <h2 className="border-solid border-b-2 flex justify-between items-center p-4 text-gray-800 text-2xl">
@@ -27,7 +29,7 @@ export const General = ({ book }) => {
       </div>
       <div className="flex gap-12">
         <Buttons.ActionButton
-          text="Mark as read"
+          text={changeReadStatusText}
           className="bg-blue-500 hover:bg-blue-600"
           icon={<Icon path={mdiRead} size={1.2} />}
         />

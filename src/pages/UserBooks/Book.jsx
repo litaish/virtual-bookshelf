@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Rating } from '@smastrom/react-rating';
 import Icon from '@mdi/react';
 import { mdiCheckCircle } from '@mdi/js';
-import styles from './UserBooks.module.css';
 
 export const Book = ({ book }) => {
   return (
@@ -27,7 +26,7 @@ export const Book = ({ book }) => {
       </div>
 
       {book.isRead && (
-        <div className={`${styles.read_icon} text-green-800`}>
+        <div className='text-green-800 absolute -top-3 -right-3'>
           <Icon path={mdiCheckCircle} size={2} />
         </div>
       )}

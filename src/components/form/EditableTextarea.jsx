@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import Icon from '@mdi/react';
 import { mdiBookEditOutline } from '@mdi/js';
-import styles from './Form.module.css';
 
 export const EditableTextarea = ({ label, id, placeholder, name, initialValue }) => {
   const [isEditable, setIsEditable] = useState(true);
@@ -35,7 +34,7 @@ export const EditableTextarea = ({ label, id, placeholder, name, initialValue })
           rows="10"
         >
         </textarea>
-        <button onClick={handleToggleEdit} className={`${styles.textarea_edit_button} absolute rounded-full bg-emerald-500 text-slate-50 p-2 transition-colors hover:bg-emerald-600`}>
+        <button onClick={handleToggleEdit} className='absolute rounded-full bg-emerald-500 text-slate-50 p-2 transition-colors hover:bg-emerald-600 -top-3 -right-3' >
           <Icon path={mdiBookEditOutline} size={1.6} />
         </button>
       </div>

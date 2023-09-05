@@ -9,6 +9,7 @@ Currently, two official plugins are available:
 
 ### Built using:
 
+- Figma (for idea design)
 - React
 - Tailwind
 - CSS Modules
