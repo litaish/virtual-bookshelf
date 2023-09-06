@@ -21,7 +21,7 @@ export const General = ({ book, onRemoveClick }) => {
           <img
             src={book.imgSrc}
             alt={book.title}
-            className="rounded-md shadow-2xl w-44 lg:w-60 2xl:w-96"
+            className="rounded-md shadow-2xl w-44 lg:w-60"
           />
         </div>
       </div>
