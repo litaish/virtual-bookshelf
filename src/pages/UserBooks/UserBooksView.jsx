@@ -17,7 +17,7 @@ export const UserBooksView = () => {
   });
 
   return (
-    <main className="p-8 flex flex-col gap-8">
+    <main className="p-8 flex flex-col gap-8 2xl:px-60">
       <Buttons.ActionButton
       type="button"
         text="Add new book"

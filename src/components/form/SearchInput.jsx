@@ -32,7 +32,7 @@ export const SearchInput = ({ label, placeholder, className, onChange }) => {
           type="search"
           id="default-search"
           className={twMerge(
-            'block w-full p-4 pl-10 text-lg text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-5',
+            'block w-full p-4 pl-10 text-lg text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-5 md:text-2xl',
             className,
           )}
           placeholder={placeholder}

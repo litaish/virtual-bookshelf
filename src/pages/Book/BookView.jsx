@@ -62,7 +62,7 @@ export const BookView = () => {
   }
 
   return (
-    <main className="p-8 flex flex-col gap-8">
+    <main className="p-8 flex flex-col gap-8 2xl:px-60">
       <Layout.PrimaryHeader text="Edit Book Information" />
       <Book.General book={book} onRemoveClick={handleRemoveClick} />
       <Book.GiveARating />

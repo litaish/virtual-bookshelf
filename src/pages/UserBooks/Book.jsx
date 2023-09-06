@@ -15,9 +15,9 @@ export const Book = ({ book }) => {
             alt={`${book.title} `}
           />
         </Link>
-        <p className="text-gray-800 text-xl font-medium">{book.title}</p>
+        <p className="text-gray-800 text-xl font-medium md:text-2xl">{book.title}</p>
 
-        <p className="text-xl text-gray-600">
+        <p className="text-xl text-gray-600 md:text-2xl">
           {/* Return an array of name property values and join them with comma */}
           {book.authors.map(author => author.name).join()}
         </p>
