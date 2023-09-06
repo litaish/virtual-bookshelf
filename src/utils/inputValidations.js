@@ -98,6 +98,24 @@ export const num_validation = {
   },
 };
 
+export const isbn_validation = {
+  name: 'search_isbn',
+  label: 'ISBN',
+  type: 'text',
+  id: 'search_isbn',
+  placeholder: 'Input a valid ISBN ...',
+  validation: {
+    pattern: {
+      value: /(ISBN[-]*(1[03])*[ ]*(: ){0,1})*(([0-9Xx][- ]*){13}|([0-9Xx][- ]*){10})/, // ISBN-10 and ISBN-10 standart
+      message: 'not a valid ISBN format',
+    },
+    required: {
+      value: true,
+      message: 'required',
+    },
+  },
+};
+
 export const email_validation = {
   name: 'email',
   label: 'Email address',

@@ -47,6 +47,7 @@ export const DialogModal = ({ show, isError, onConfirmClick }) => {
                         <div className="flex justify-center items-center mt-8 border-t-2">
                             <Buttons.ActionButton
                                 onClick={onConfirmClick}
+                                type="button"
                                 text="Confirm"
                                 className="bg-transparent text-gray-800 font-medium normal-case hover:bg-transparent"
                             />

@@ -1,2 +1,3 @@
 export { Navbar } from './Navbar';
-export { Header } from './Header';
+export { PrimaryHeader } from './PrimaryHeader';
+export { SecondaryHeader } from './SecondaryHeader';

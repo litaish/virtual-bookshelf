@@ -35,11 +35,13 @@ export const CTAModal = ({ show, title, text, onCancelClick, onConfirmClick }) =
             <div className="flex justify-between mt-8">
               <Buttons.ActionButton
                 onClick={onConfirmClick}
+                type="button"
                 text="Confirm"
                 className="bg-blue-500 hover:bg-blue-600"
               />
               <Buttons.ActionButton
                 onClick={onCancelClick}
+                type="button"
                 text="Cancel"
                 className="bg-red-500 hover:bg-red-600"
               />

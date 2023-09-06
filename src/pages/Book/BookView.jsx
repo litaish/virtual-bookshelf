@@ -63,13 +63,14 @@ export const BookView = () => {
 
   return (
     <main className="p-8 flex flex-col gap-8">
-      <Layout.Header text="Edit Book Information" />
+      <Layout.PrimaryHeader text="Edit Book Information" />
       <Book.General book={book} onRemoveClick={handleRemoveClick} />
       <Book.GiveARating />
       <Book.Notes />
       <Buttons.ActionButton
         onClick={handleSaveClick}
         text="Save Data"
+        type="button"
         icon={<Icon path={mdiContentSaveAll} size={1.2} />}
       />
       <UI.CTAModal {...CTAmodal} onCancelClick={handleRemoveCancelClick} onConfirmClick={handleRemoveConfirmClick} />

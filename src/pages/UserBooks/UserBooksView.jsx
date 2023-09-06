@@ -19,10 +19,11 @@ export const UserBooksView = () => {
   return (
     <main className="p-8 flex flex-col gap-8">
       <Buttons.ActionButton
+      type="button"
         text="Add new book"
         icon={<Icon path={mdiPlus} size={1.2} />}
       />
-      <Layout.Header text="My Books" bookCount={data?.data.length} />
+      <Layout.PrimaryHeader text="My Books" bookCount={data?.data.length} />
 
       {isLoading && (
         <div className="flex justify-center items-center mt-32">

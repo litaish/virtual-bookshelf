@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { twMerge } from 'tailwind-merge';
 
-export const Header = ({ text, bookCount, className }) => {
+export const PrimaryHeader = ({ text, bookCount, className }) => {
   return (
     <header
       className={twMerge(
@@ -19,7 +19,7 @@ export const Header = ({ text, bookCount, className }) => {
   );
 };
 
-Header.propTypes = {
+PrimaryHeader.propTypes = {
   text: PropTypes.string.isRequired,
   bookCount: PropTypes.number,
   className: PropTypes.string,

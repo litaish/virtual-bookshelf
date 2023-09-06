@@ -1,5 +1,5 @@
 import logo_modern from '../../assets/vb_modern.png';
-import { Input } from '../../components/form';
+import { Form } from '../../components/index';
 import { AuthButton } from '../../components/buttons/AuthButton';
 import {
   email_validation,
@@ -12,7 +12,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 export const SignupForm = () => {
   const methods = useForm();
 
-  const handleSubmit = methods.handleSubmit(data => {
+  const onSubmit = methods.handleSubmit(data => {
     console.log(data);
     methods.reset();
     // Navigate to My Books
@@ -35,14 +35,14 @@ export const SignupForm = () => {
           <img src={logo_modern} alt="Virtual Bookshelf logo" />
         </div>
         <div className="flex flex-col gap-4">
-          <Input {...email_validation} />
-          <Input {...password_signup_validation} />
-          <Input
+          <Form.Input {...email_validation} />
+          <Form.Input {...password_signup_validation} />
+          <Form.Input
             {...password_confirm_validation}
             validation={{ validate: validatePasswordMatch }}
           />
         </div>
-        <AuthButton handleSubmit={handleSubmit} text="Signup" />
+        <AuthButton onSubmit={onSubmit} text="Signup" />
         <div className="text-center mt-6 text-xl text-gray-900 md:text-2xl">
           Already have an account?
           <Link to="/login" className="ml-2 font-semibold text-emerald-600">

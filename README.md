@@ -10,6 +10,7 @@ Currently, two official plugins are available:
 ### Built using:
 
 - Figma (for idea design)
+- Vite
 - React
 - Tailwind
 - CSS Modules
