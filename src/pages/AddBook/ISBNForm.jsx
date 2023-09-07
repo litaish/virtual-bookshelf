@@ -5,7 +5,7 @@ import { isbn_validation } from "../../utils";
 export const ISBNForm = () => {
     const methods = useForm();
 
-    const onSubmit = () => methods.handleSubmit(data => {
+    const onSubmit = methods.handleSubmit(data => {
         console.log(data);
         methods.reset();
     });

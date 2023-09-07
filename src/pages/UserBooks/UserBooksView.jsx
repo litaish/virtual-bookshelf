@@ -12,7 +12,7 @@ export const UserBooksView = () => {
 
   const handleSearchChange = e => setSearch(e.target.value);
 
-  const { isLoading, data, isError, error } = useQuery('books', () => {
+  const { isLoading, data, isError, error } = useQuery('all_books', () => {
     return axios.get('http://localhost:3030/books');
   });
 
