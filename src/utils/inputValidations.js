@@ -107,7 +107,7 @@ export const isbn_validation = {
   validation: {
     pattern: {
       value: /(ISBN[-]*(1[03])*[ ]*(: ){0,1})*(([0-9Xx][- ]*){13}|([0-9Xx][- ]*){10})/, // ISBN-10 and ISBN-10 standart
-      message: 'not a valid ISBN format',
+      message: 'not a valid ISBN 10 or ISBN 13 format',
     },
     required: {
       value: true,

@@ -1,14 +1,21 @@
 import { Layout, Buttons, UI } from '../../components/index';
 import { Book } from '../index';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Icon from '@mdi/react';
 import { mdiContentSaveAll } from '@mdi/js';
 import { useState } from 'react';
+import { useQuery } from 'react-query';
+import axios from 'axios';
 
 export const BookView = () => {
-  const location = useLocation();
-  const book = location.state?.data;
+  const { id } = useParams();
   const navigate = useNavigate();
+
+  const { isLoading, data, isError, error } = useQuery('single_book', () => {
+    return axios.get(`http://localhost:3030/books/${id}`);
+  });
+
+  const book = data?.data;
 
   const [CTAmodal, setCTAmodal] = useState({
     show: false,
@@ -22,10 +29,10 @@ export const BookView = () => {
   });
 
   const handleRemoveClick = () => {
-    setCTAmodal({ 
-      show: true, 
-      title: "Delete this book?", 
-      text: "This book will be permenetly deleted." 
+    setCTAmodal({
+      show: true,
+      title: "Delete this book?",
+      text: "This book will be permenetly deleted."
     });
   }
 
@@ -35,7 +42,7 @@ export const BookView = () => {
       title: '',
       text: '',
     });
-    console.log(`Deleted book ${book.id}`);
+    console.log(`Deleted book ${id}`);
     navigate("/books");
   }
 
@@ -64,17 +71,31 @@ export const BookView = () => {
   return (
     <main className="p-8 flex flex-col gap-8 2xl:px-60">
       <Layout.PrimaryHeader text="Edit Book Information" />
-      <Book.General book={book} onRemoveClick={handleRemoveClick} />
-      <Book.GiveARating />
-      <Book.Notes />
-      <Buttons.ActionButton
-        onClick={handleSaveClick}
-        text="Save Data"
-        type="button"
-        icon={<Icon path={mdiContentSaveAll} size={1.2} />}
-      />
+
+      {isLoading && (
+        <div className="flex justify-center items-center mt-32">
+          <UI.LoadingSpinner className="w-14 h-14" />
+        </div>
+      )}
+
+      {isError && <UI.ErrorAlert errorMessage={error.message} />}
+
+      {book && (
+        <>
+          <Book.General ISBN={book.ISBN} title={book.title} authors={book.authors} genres={book.genres} isRead={book.isRead} imgSrc={book.imgSrc} onRemoveClick={handleRemoveClick} />
+          <Book.GiveARating initialRating={book.rating} />
+          <Book.Notes initialNote={book.notes} />
+          <Buttons.ActionButton
+            onClick={handleSaveClick}
+            text="Save Data"
+            type="button"
+            icon={<Icon path={mdiContentSaveAll} size={1.2} />}
+          />
+        </>
+      )}
+      
       <UI.CTAModal {...CTAmodal} onCancelClick={handleRemoveCancelClick} onConfirmClick={handleRemoveConfirmClick} />
-      <UI.DialogModal {...dialogModal} onConfirmClick={handleSaveConfirmClick}/>
+      <UI.DialogModal {...dialogModal} onConfirmClick={handleSaveConfirmClick} />
     </main>
   );
 };

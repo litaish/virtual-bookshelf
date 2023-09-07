@@ -1,6 +1,7 @@
 import { Form, Layout } from '../../components/index';
+import PropTypes from 'prop-types';
 
-export const Notes = () => {
+export const Notes = ({ initialNote }) => {
   return (
     <section className="flex flex-col gap-6">
       <Layout.SecondaryHeader text="Notes"/>
@@ -9,8 +10,12 @@ export const Notes = () => {
         id="notes_textarea"
         name="notes_textarea"
         placeholder="Write your notes ..."
-        initialValue="Hello, this is a test note."
+        initialValue={initialNote}
       />
     </section>
   );
 };
+
+Notes.propTypes = {
+  initialNote: PropTypes.string,
+}

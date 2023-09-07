@@ -21,6 +21,8 @@ Currently, two official plugins are available:
 
 ### Todo:
 
-- Fix layout in books page (margins)
-- Fix layout in larger screen sizes for books page
-- Add flexible margins for books page elements with twMerge
+- Organize modals (globally) and use custom hooks for them
+- Add font and font smoothing
+- Resize images on client
+- State management
+- Add CRUD operations
