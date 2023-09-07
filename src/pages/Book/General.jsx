@@ -10,8 +10,8 @@ export const General = ({ ISBN, title, authors, genres, isRead, imgSrc, onRemove
   return (
     <section className="flex flex-col gap-6">
       <Layout.SecondaryHeader text="General Information"/>
-      <div className="flex justify-between">
-        <div className="flex flex-col gap-2">
+      <div className="flex justify-between gap-2">
+        <div className="flex flex-col gap-2 md:gap-4">
           <Book.GeneralItem title="ISBN" value={ISBN} />
           <Book.GeneralItem title="Title" value={title} />
           <Book.GeneralItem title="Authors" value={authors} />
