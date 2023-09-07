@@ -1,5 +1,5 @@
 import { Outlet, useLocation } from 'react-router-dom';
-import { Navbar } from './components/layout';
+import { Layout } from './components/index';
 import { QueryClientProvider, QueryClient } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
@@ -17,7 +17,7 @@ const App = () => {
 
   const regularView = (
     <>
-      <Navbar />
+      <Layout.Navbar />
       <Outlet />
     </>
   );

@@ -23,7 +23,7 @@ const modalVariants = {
 }
 
 
-export const DialogModal = ({ show, isError, onConfirmClick }) => {
+export const DialogModal = ({ show, text, isError, onConfirmClick }) => {
     const title = isError ? "Uh oh!" : "Success!";
 
     const icon = isError ? (
@@ -31,8 +31,6 @@ export const DialogModal = ({ show, isError, onConfirmClick }) => {
     ) : (
         <Icon path={mdiCheckCircle} size={8} className="text-green-500" />
     );
-
-    const text = isError ? "There has been an error trying to complete your request." : "Your request has been fulfilled succesfully.";
 
     return (
         <AnimatePresence mode="wait">
@@ -61,6 +59,7 @@ export const DialogModal = ({ show, isError, onConfirmClick }) => {
 
 DialogModal.propTypes = {
     show: PropTypes.bool.isRequired,
+    text: PropTypes.string.isRequired,
     isError: PropTypes.bool.isRequired,
     onConfirmClick: PropTypes.func.isRequired,
 }

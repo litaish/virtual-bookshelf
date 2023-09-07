@@ -55,8 +55,8 @@ export const CTAModal = ({ show, title, text, onCancelClick, onConfirmClick }) =
 
 CTAModal.propTypes = {
   show: PropTypes.bool.isRequired,
-  title: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
-  onCancelClick: PropTypes.func.isRequired,
-  onConfirmClick: PropTypes.func.isRequired,
+  title: PropTypes.string,
+  text: PropTypes.string,
+  onCancelClick: PropTypes.func,
+  onConfirmClick: PropTypes.func,
 }

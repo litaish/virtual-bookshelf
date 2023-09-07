@@ -5,6 +5,7 @@ import Icon from '@mdi/react';
 import { mdiRead, mdiBookRemoveMultiple } from '@mdi/js';
 
 export const General = ({ ISBN, title, authors, genres, isRead, imgSrc, onRemoveClick }) => {
+  // const { openCTAModal } = useCTAModal();
   const changeReadStatusText = isRead ? 'Mark as unread' : 'Mark as read';
 
   return (
