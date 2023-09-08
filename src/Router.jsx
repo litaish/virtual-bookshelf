@@ -37,7 +37,7 @@ const Router = () => {
           element: <Signup.SignupView />,
         },
         {
-          path: 'book/:id',
+          path: 'books/:id',
           element: <Book.BookView />,
         },
       ],

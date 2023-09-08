@@ -8,7 +8,7 @@ export const Book = ({ book }) => {
   return (
     <div className="relative">
       <div className="flex flex-col justify-center items-center gap-1 text-center">
-        <Link to={`/book/${book.id}`} state={{ data: book }}>
+        <Link to={`/books/${book.id}`} state={{ data: book }}>
           <img
             className="rounded-md mb-2"
             src={book.imgSrc}

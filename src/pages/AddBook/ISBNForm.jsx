@@ -1,12 +1,13 @@
 import { Buttons, Form, Layout } from "../../components/index";
 import { FormProvider, useForm } from 'react-hook-form';
 import { isbn_validation } from "../../utils";
+import PropTypes from 'prop-types';
 
-export const ISBNForm = () => {
+export const ISBNForm = ({ onSearch }) => {
     const methods = useForm();
 
     const onSubmit = methods.handleSubmit(data => {
-        console.log(data);
+        onSearch(data.search_isbn);
         methods.reset();
     });
 
@@ -24,3 +25,7 @@ export const ISBNForm = () => {
         </FormProvider>
     )
 };
+
+ISBNForm.propTypes = {
+    onSearch: PropTypes.func,
+}

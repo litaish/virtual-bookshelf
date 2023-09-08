@@ -13,11 +13,15 @@ export const BookView = () => {
   const CTAModal = useCTAModal();
   const DialogModal = useDialogModal();
 
-  const { isLoading, data, isError, error } = useQuery('single_book', () => {
+  const { isLoading, data, isError, error } = useQuery(['single_book', id], () => {
     return axios.get(`http://localhost:3030/books/${id}`);
+  },
+  {
+    select: (data) => {
+      const book = data.data;
+      return book;
+    }
   });
-
-  const book = data?.data;
 
   const handleRemoveClick = () => CTAModal.open({ title: "Delete this book?", text: "This book will be permenetly deleted." })
 
@@ -49,11 +53,11 @@ export const BookView = () => {
 
       {isError && <UI.ErrorAlert errorMessage={error.message} />}
 
-      {book && (
+      {data && (
         <>
-          <Book.General ISBN={book.ISBN} title={book.title} authors={book.authors} genres={book.genres} isRead={book.isRead} imgSrc={book.imgSrc} onRemoveClick={handleRemoveClick}/>
-          <Book.GiveARating initialRating={book.rating} />
-          <Book.Notes initialNote={book.notes} />
+          <Book.General ISBN={data.ISBN} title={data.title} authors={data.authors} genres={data.genres} isRead={data.isRead} imgSrc={data.imgSrc} onRemoveClick={handleRemoveClick}/>
+          <Book.GiveARating initialRating={data.rating} />
+          <Book.Notes initialNote={data.notes} />
           <Buttons.ActionButton
             onClick={handleSaveClick}
             text="Save Data"

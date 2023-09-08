@@ -14,8 +14,14 @@ export const UserBooksView = () => {
 
   const { isLoading, data, isError, error } = useQuery('all_books', () => {
     return axios.get('http://localhost:3030/books');
+  }, 
+  {
+    select: (data) => {
+      const books = data.data;
+      return books;
+    },
   });
-
+  
   return (
     <main className="p-8 flex flex-col gap-8 2xl:px-60">
       <Buttons.ActionButton
@@ -23,7 +29,7 @@ export const UserBooksView = () => {
         text="Add new book"
         icon={<Icon path={mdiPlus} size={1.2} />}
       />
-      <Layout.PrimaryHeader text="My Books" bookCount={data?.data.length} />
+      <Layout.PrimaryHeader text="My Books" bookCount={data?.length} />
 
       {isLoading && (
         <div className="flex justify-center items-center mt-32">
@@ -33,9 +39,9 @@ export const UserBooksView = () => {
 
       {isError && <UI.ErrorAlert errorMessage={error.message} />}
 
-      {data?.data.length === 0 && <UserBooks.NoBooksAlert />}
+      {data?.length === 0 && <UserBooks.NoBooksAlert />}
 
-      {data?.data.length > 0 && (
+      {data?.length > 0 && (
         <>
           <Form.SearchInput
             label="Search"
@@ -43,7 +49,7 @@ export const UserBooksView = () => {
             onChange={handleSearchChange}
           />
           <div className={`${styles.grid_books}`}>
-            {data?.data
+            {data
               .filter(item => {
                 return search.toLowerCase() === ''
                   ? item

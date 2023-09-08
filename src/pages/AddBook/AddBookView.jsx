@@ -2,15 +2,52 @@ import { Layout, Buttons } from "../../components/index";
 import { AddBook } from '../index';
 import Icon from '@mdi/react';
 import { mdiBarcodeScan } from '@mdi/js';
+import axios from "axios";
+import { useQuery } from "react-query";
+import { useState } from "react";
 
 export const AddBookView = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const { isLoading, data, isError, error, isFetching, refetch } = useQuery(['google_books_api_search', searchTerm], () => {
+    return axios.get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${searchTerm}&maxResults=1&key=${import.meta.env.VITE_GOOGLE_BOOKS_API_KEY}`);
+  },
+    {
+      refetchOnWindowFocus: false,
+      enabled: !!searchTerm,
+      select: (data) => {
+        // add filtering and other transformations
+        // const bookData = data.data.items[0].volumeInfo;
+        return data;
+      },
+      onSuccess: handleSuccess,
+      onError: handleError,
+    });
+  
+  function handleSearch(newSearchTerm) {
+    setSearchTerm(newSearchTerm);
+    refetch();
+  }
+
+  function handleSuccess(data) {
+    console.log('Perform sideeffect after data fetching - success', data)
+    // check if data is populated
+  }
+  function handleError(error) {
+    console.log('Perform sideeffect after data fetching - failiure', error)
+  }
+
+  // if (isLoading || isFetching) {
+  //   console.log('is loading or fetchig')
+  // }
+
   return (
     <main className="p-8 flex flex-col gap-8 2xl:px-60">
       <Layout.PrimaryHeader text="Add A Book To Library" />
       <div>
         <Buttons.ActionButton type="button" text="Scan by code" icon={<Icon path={mdiBarcodeScan} size={1.2} />} />
       </div>
-      <AddBook.ISBNForm />
+      <AddBook.ISBNForm onSearch={handleSearch} />
     </main>
   );
 };
