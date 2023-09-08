@@ -56,10 +56,13 @@ export const AddBookView = () => {
     if (data) {
       CTAModal.open({
         title: "Book found!",
-        text: `Book - ${data.title} has been found. Would you like to add it to your library?`,
+        text: `${data.title} has been found. Add to library?`,
       });
     } else {
-      console.log("Nothing found, unfortunately.")
+      DialogModal.open({
+        text: "No book has been found. Try a different book.",
+        isErrorModal:  true,
+      })
     }
   }
 
