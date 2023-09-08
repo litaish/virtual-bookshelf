@@ -23,7 +23,7 @@ const App = () => {
   );
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="min-h-screen">
+      <div className="min-h-screen font-inter">
         {['/', '/login', '/signup'].includes(pathName) ? authView : regularView}
       </div>
       <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />

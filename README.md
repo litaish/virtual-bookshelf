@@ -25,4 +25,3 @@ Currently, two official plugins are available:
 - Resize images on client
 - State management
 - Add CRUD operations
-- Possibly remove the onConfirm and onCancel for both modals
