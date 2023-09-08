@@ -30,16 +30,12 @@ export const BookView = () => {
     CTAModal.close();
   }
 
-  const handleRemoveCancel = () => CTAModal.close();
-
   const handleSaveClick = () => {
     // if success
     // DialogModal.open({ text: "Data saved succesfully!", isErrorModal: false });
     // if error
     // DialogModal.open({ text: "There has been an error trying to complete your request.", isErrorModal: true });
   };
-
-  const handleSaveConfirm = () => DialogModal.close();
 
   return (
     <main className="p-8 flex flex-col gap-8 2xl:px-60">
@@ -67,9 +63,8 @@ export const BookView = () => {
         </>
       )}
       
-      <UI.CTAModal show={CTAModal.show} title={CTAModal.content.title} text={CTAModal.content.text} onCancelClick={handleRemoveCancel} onConfirmClick={handleRemoveConfirm} />
-
-      <UI.DialogModal show={DialogModal.show} text={DialogModal.text} isError={DialogModal.isErrorModal} onConfirmClick={handleSaveConfirm} />
+      <UI.CTAModal show={CTAModal.show} title={CTAModal.content.title} text={CTAModal.content.text} onCancelClick={CTAModal.close} onConfirmClick={handleRemoveConfirm} />
+      <UI.DialogModal show={DialogModal.show} text={DialogModal.text} isError={DialogModal.isErrorModal} onConfirmClick={DialogModal.close} />
     </main>
   );
 };
