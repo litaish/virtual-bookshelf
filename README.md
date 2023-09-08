@@ -18,10 +18,14 @@ Currently, two official plugins are available:
 - Framer Motion
 - JSON Server (for mock API)
 - React Query
+- Html5-QRCode
 
 ### Todo:
 
-- Add font and font smoothing
 - Resize images on client
 - State management
 - Add CRUD operations
+- Add scanner component
+
+### Issues:
+Uploading an image of a book barcode seems to have issues. Scanning via camera works. (EAN 13)
