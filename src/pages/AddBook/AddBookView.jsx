@@ -14,51 +14,77 @@ export const AddBookView = () => {
   const CTAModal = useCTAModal();
   const DialogModal = useDialogModal();
 
-  const { isLoading, data, isError, error, isFetching, refetch } = useQuery(['google_books_api_search', searchTerm], () => {
+  const { isLoading, isFetching, refetch } = useQuery(['google_books_api_search', searchTerm], () => {
     return axios.get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${searchTerm}&maxResults=1&key=${import.meta.env.VITE_GOOGLE_BOOKS_API_KEY}`);
   },
     {
       refetchOnWindowFocus: false,
       enabled: !!searchTerm,
       select: (data) => {
-        // add filtering and other transformations
-        // const bookData = data.data.items[0].volumeInfo;
-        return data;
+        if (data.data.items) {
+          const volumeInfo = data.data.items[0].volumeInfo;
+          return {
+            ISBN_10: volumeInfo?.industryIdentifiers?.[0]?.identifier,
+            ISBN_13: volumeInfo?.industryIdentifiers?.[1]?.identifier,
+            title: volumeInfo?.title,
+            authors: volumeInfo?.authors,
+            categories: volumeInfo?.categories,
+            pageCount: volumeInfo?.pageCount,
+            img: volumeInfo?.imageLinks?.thumbnail,
+            imgSmall: volumeInfo?.imageLinks?.smallThumnail,
+          };
+        } else {
+          return null;
+        }
       },
       onSuccess: handleSuccess,
       onError: handleError,
     });
 
   function handleAddBookConfirm() {
-    // on confirm do something like add book
+    // logic
     CTAModal.close();
   }
-  
+
   function handleSearch(newSearchTerm) {
     setSearchTerm(newSearchTerm);
     refetch();
   }
 
+  // Success can mean that a book is found and book data can not be found
   function handleSuccess(data) {
-    // console.log('Perform sideeffect after data fetching - success', data)
-    // // check if data is populated
+    if (data) {
+      CTAModal.open({
+        title: "Book found!",
+        text: `Book - ${data.title} has been found. Would you like to add it to your library?`,
+      });
+    } else {
+      console.log("Nothing found, unfortunately.")
+    }
   }
 
   function handleError(error) {
-    console.log('Perform sideeffect after data fetching - failiure', error)
+    DialogModal.open({
+      text: error.message,
+      isErrorModal: true,
+    });
   }
-
-  // if (isLoading || isFetching) {
-  //   console.log('is loading or fetchig')
-  // }
 
   return (
     <main className="p-8 flex flex-col gap-8 2xl:px-60">
-      <Layout.PrimaryHeader text="Add A Book To Library" />
-      <div>
-        <Buttons.ActionButton type="button" text="Scan by code" icon={<Icon path={mdiBarcodeScan} size={1.2} />} />
-      </div>
-      <AddBook.ISBNForm onSearch={handleSearch} />
+      {(isLoading || isFetching) ? (
+        <div className="flex justify-center items-center mt-32">
+          <UI.LoadingSpinner className="w-14 h-14" />
+        </div>
+      ) : (
+        <>
+          <Layout.PrimaryHeader text="Add A Book To Library" />
+          <div>
+            <Buttons.ActionButton type="button" text="Scan by code" icon={<Icon path={mdiBarcodeScan} size={1.2} />} />
+          </div>
+          <AddBook.ISBNForm onSearch={handleSearch} />
+        </>
+      )}
 
       <UI.CTAModal show={CTAModal.show} title={CTAModal.content.title} text={CTAModal.content.text} onCancelClick={CTAModal.close} onConfirmClick={handleAddBookConfirm} />
       <UI.DialogModal show={DialogModal.show} text={DialogModal.text} isError={DialogModal.isErrorModal} onConfirmClick={DialogModal.close} />
