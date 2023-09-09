@@ -4,8 +4,9 @@ import { mdiBarcodeScan } from '@mdi/js';
 import { useEffect, useState } from "react";
 import { Html5QrcodeScanner } from "html5-qrcode";
 import { motion, AnimatePresence } from 'framer-motion';
+import PropTypes from 'prop-types';
 
-export const BarcodeScannerControl = () => {
+export const BarcodeScannerControl = ({ onScan }) => {
     const [scanResult, setScanResult] = useState(null);
     const [showScanner, setShowScanner] = useState(false);
 
@@ -15,6 +16,7 @@ export const BarcodeScannerControl = () => {
         function onScanSuccess(result) {
             scanner.clear();
             setScanResult(result);
+            onScan(result);
         }
 
         function onScanError(error) {
@@ -65,3 +67,7 @@ export const BarcodeScannerControl = () => {
         </div>
     )
 };
+
+BarcodeScannerControl.propTypes = {
+    onScan: PropTypes.func,
+}

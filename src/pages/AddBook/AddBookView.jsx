@@ -58,7 +58,7 @@ export const AddBookView = () => {
       });
     } else {
       DialogModal.open({
-        text: "No book has been found. Try a different book.",
+        text: "No book has been found by this code. Try a different book.",
         isErrorModal:  true,
       })
     }
@@ -80,7 +80,7 @@ export const AddBookView = () => {
       ) : (
         <>
           <Layout.PrimaryHeader text="Add A Book To Library" />
-          <AddBook.BarcodeScannerControl />
+          <AddBook.BarcodeScannerControl onScan={handleSearch}/>
           <AddBook.ISBNForm onSearch={handleSearch} />
         </>
       )}

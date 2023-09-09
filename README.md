@@ -28,4 +28,4 @@ Currently, two official plugins are available:
 - Add scanner component
 
 ### Issues:
-Uploading an image of a book barcode seems to have issues. Scanning via camera works. (EAN 13)
+Uploading an image of a book barcode seems to have issues. Scanning via camera works (EAN 13). Probably related to camera quality.
