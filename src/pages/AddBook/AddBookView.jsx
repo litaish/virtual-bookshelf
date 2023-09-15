@@ -1,26 +1,20 @@
 import { Layout } from "../../components/index";
 import { AddBook } from '../index';
-import axios from "axios";
 import { useState } from "react";
-import useCTAModal from "../../hooks/useCTAModal";
-import useDialogModal from "../../hooks/useDialogModal";
 import { UI } from "../../components/index";
-import { urlBooks } from "../../../endpoints";
-import useGoogleBooksAPISearch from "../../hooks/useGoogleBooksAPISearch";
+import { useGoogleBooksAPISearch, useAddBookData, useCTAModal, useDialogModal } from "../../hooks/index";
 
 export const AddBookView = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const CTAModal = useCTAModal();
   const DialogModal = useDialogModal();
 
-  const { isLoading, isFetching, refetch } = useGoogleBooksAPISearch(searchTerm, handleSuccess, handleError); 
+  const { isLoading, isFetching, refetch, data } = useGoogleBooksAPISearch(searchTerm, handleSuccess, handleError); 
 
-  function handleAddBook(book) {
-    return axios.post(urlBooks, book);
-  }
+  const { mutate: addBook } = useAddBookData();
 
   function handleAddBookConfirm() {
-    // logic
+    addBook(data); // Add book (post)
     CTAModal.close();
   }
 

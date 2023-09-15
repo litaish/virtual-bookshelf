@@ -3,25 +3,14 @@ import { Book } from '../index';
 import { useParams } from 'react-router-dom';
 import Icon from '@mdi/react';
 import { mdiContentSaveAll } from '@mdi/js';
-import { useQuery } from 'react-query';
-import axios from 'axios';
-import useCTAModal from '../../hooks/useCTAModal';
-import useDialogModal from '../../hooks/useDialogModal';
+import { useCTAModal, useDialogModal, useBookData } from '../../hooks/index';
 
 export const BookView = () => {
   const { id } = useParams();
   const CTAModal = useCTAModal();
   const DialogModal = useDialogModal();
 
-  const { isLoading, data, isError, error } = useQuery(['single_book', id], () => {
-    return axios.get(`http://localhost:3030/books/${id}`);
-  },
-  {
-    select: (data) => {
-      const book = data.data;
-      return book;
-    }
-  });
+  const { isLoading, data, isError, error } = useBookData(id);
 
   const handleRemoveClick = () => CTAModal.open({ title: "Delete this book?", text: "This book will be permenetly deleted." })
 

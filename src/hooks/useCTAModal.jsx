@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function useCTAModal() {
+export function useCTAModal() {
     const [show, setShow] = useState(false);
     const [content, setContent] = useState({ title: '', text: '' })
 

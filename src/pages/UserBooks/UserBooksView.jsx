@@ -3,30 +3,20 @@ import { UserBooks } from '../index';
 import Icon from '@mdi/react';
 import { mdiPlus } from '@mdi/js';
 import styles from './UserBooks.module.css';
-import { useQuery } from 'react-query';
-import axios from 'axios';
 import { useState } from 'react';
-import { urlBooks } from '../../../endpoints';
+import { useBookData } from '../../hooks/index';
 
 export const UserBooksView = () => {
   const [search, setSearch] = useState('');
 
   const handleSearchChange = e => setSearch(e.target.value);
 
-  const { isLoading, data, isError, error } = useQuery('all_books', () => {
-    return axios.get(urlBooks);
-  }, 
-  {
-    select: (data) => {
-      const books = data.data;
-      return books;
-    },
-  });
-  
+  const { isLoading, data, isError, error } = useBookData();
+
   return (
     <main className="p-8 flex flex-col gap-8 2xl:px-60">
       <Buttons.ActionButton
-      type="button"
+        type="button"
         text="Add new book"
         icon={<Icon path={mdiPlus} size={1.2} />}
       />

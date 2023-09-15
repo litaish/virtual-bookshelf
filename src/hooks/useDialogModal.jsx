@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function useDialogModal() {
+export function useDialogModal() {
     const [show, setShow] = useState(false);
     const [text, setText] = useState("");
     const [isErrorModal, setIsErrorModal] = useState(false);

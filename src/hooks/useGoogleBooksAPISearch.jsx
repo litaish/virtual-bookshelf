@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
 import axios from "axios";
 
-export default function useGoogleBooksAPISearch(searchTerm, onSuccess, onError) {
+export function useGoogleBooksAPISearch(searchTerm, onSuccess, onError) {
     return useQuery(
         ['google_books_api_search', searchTerm],
         async () => {
