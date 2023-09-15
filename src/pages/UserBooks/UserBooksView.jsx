@@ -6,6 +6,7 @@ import styles from './UserBooks.module.css';
 import { useQuery } from 'react-query';
 import axios from 'axios';
 import { useState } from 'react';
+import { urlBooks } from '../../../endpoints';
 
 export const UserBooksView = () => {
   const [search, setSearch] = useState('');
@@ -13,7 +14,7 @@ export const UserBooksView = () => {
   const handleSearchChange = e => setSearch(e.target.value);
 
   const { isLoading, data, isError, error } = useQuery('all_books', () => {
-    return axios.get('http://localhost:3030/books');
+    return axios.get(urlBooks);
   }, 
   {
     select: (data) => {

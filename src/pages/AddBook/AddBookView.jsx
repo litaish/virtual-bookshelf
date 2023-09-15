@@ -1,11 +1,12 @@
 import { Layout } from "../../components/index";
 import { AddBook } from '../index';
 import axios from "axios";
-import { useQuery } from "react-query";
+import { useQuery, useMutation } from "react-query";
 import { useState } from "react";
 import useCTAModal from "../../hooks/useCTAModal";
 import useDialogModal from "../../hooks/useDialogModal";
 import { UI } from "../../components/index";
+import { urlBooks } from "../../../endpoints";
 
 export const AddBookView = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -22,8 +23,8 @@ export const AddBookView = () => {
         if (data.data.items) {
           const volumeInfo = data.data.items[0].volumeInfo;
           return {
-            ISBN_10: volumeInfo?.industryIdentifiers?.[0]?.identifier,
-            ISBN_13: volumeInfo?.industryIdentifiers?.[1]?.identifier,
+            ISBN10: volumeInfo?.industryIdentifiers?.[0]?.identifier,
+            ISBN13: volumeInfo?.industryIdentifiers?.[1]?.identifier,
             title: volumeInfo?.title,
             authors: volumeInfo?.authors,
             categories: volumeInfo?.categories,
@@ -38,6 +39,10 @@ export const AddBookView = () => {
       onSuccess: handleSuccess,
       onError: handleError,
     });
+
+  function handleAddBook(book) {
+    return axios.post(urlBooks, book);
+  }
 
   function handleAddBookConfirm() {
     // logic
