@@ -1,44 +1,19 @@
 import { Layout } from "../../components/index";
 import { AddBook } from '../index';
 import axios from "axios";
-import { useQuery, useMutation } from "react-query";
 import { useState } from "react";
 import useCTAModal from "../../hooks/useCTAModal";
 import useDialogModal from "../../hooks/useDialogModal";
 import { UI } from "../../components/index";
 import { urlBooks } from "../../../endpoints";
+import useGoogleBooksAPISearch from "../../hooks/useGoogleBooksAPISearch";
 
 export const AddBookView = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const CTAModal = useCTAModal();
   const DialogModal = useDialogModal();
 
-  const { isLoading, isFetching, refetch } = useQuery(['google_books_api_search', searchTerm], () => {
-    return axios.get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${searchTerm}&maxResults=1&key=${import.meta.env.VITE_GOOGLE_BOOKS_API_KEY}`);
-  },
-    {
-      refetchOnWindowFocus: false,
-      enabled: !!searchTerm,
-      select: (data) => {
-        if (data.data.items) {
-          const volumeInfo = data.data.items[0].volumeInfo;
-          return {
-            ISBN10: volumeInfo?.industryIdentifiers?.[0]?.identifier,
-            ISBN13: volumeInfo?.industryIdentifiers?.[1]?.identifier,
-            title: volumeInfo?.title,
-            authors: volumeInfo?.authors,
-            categories: volumeInfo?.categories,
-            pageCount: volumeInfo?.pageCount,
-            img: volumeInfo?.imageLinks?.thumbnail,
-            imgSmall: volumeInfo?.imageLinks?.smallThumnail,
-          };
-        } else {
-          return null;
-        }
-      },
-      onSuccess: handleSuccess,
-      onError: handleError,
-    });
+  const { isLoading, isFetching, refetch } = useGoogleBooksAPISearch(searchTerm, handleSuccess, handleError); 
 
   function handleAddBook(book) {
     return axios.post(urlBooks, book);
