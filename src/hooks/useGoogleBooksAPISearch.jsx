@@ -17,12 +17,15 @@ export function useGoogleBooksAPISearch(searchTerm, onSuccess, onError) {
                     return {
                         ISBN10: volumeInfo?.industryIdentifiers?.[0]?.identifier,
                         ISBN13: volumeInfo?.industryIdentifiers?.[1]?.identifier,
-                        title: volumeInfo?.title,
-                        authors: volumeInfo?.authors,
-                        categories: volumeInfo?.categories,
-                        pageCount: volumeInfo?.pageCount,
-                        img: volumeInfo?.imageLinks?.thumbnail,
-                        imgSmall: volumeInfo?.imageLinks?.smallThumbnail,
+                        Title: volumeInfo?.title,
+                        PageCount: volumeInfo?.pageCount,
+                        ImgSrc: volumeInfo?.imageLinks?.smallThumbnail,
+                        Rating: 0,
+                        Notes: "",
+                        Read: false,
+                        Authors: volumeInfo?.authors.map(author => ({ Name: author })),
+                        Categories: volumeInfo?.categories.map(category => ({ Name: category })),
+                        // img: volumeInfo?.imageLinks?.thumbnail,
                     };
                 } else {
                     return null;

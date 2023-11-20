@@ -4,19 +4,20 @@ import PropTypes from 'prop-types';
 import Icon from '@mdi/react';
 import { mdiRead, mdiBookRemoveMultiple } from '@mdi/js';
 
-export const General = ({ ISBN, title, authors, genres, isRead, imgSrc, onRemoveClick }) => {
+export const General = ({ ISBN10, ISBN13, title, authors, categories, read, imgSrc, onRemoveClick }) => {
   // const { openCTAModal } = useCTAModal();
-  const changeReadStatusText = isRead ? 'Mark as unread' : 'Mark as read';
+  const changeReadStatusText = read ? 'Mark as unread' : 'Mark as read';
 
   return (
     <section className="flex flex-col gap-6">
       <Layout.SecondaryHeader text="General Information"/>
       <div className="flex justify-between gap-2">
         <div className="flex flex-col gap-2 md:gap-4">
-          <Book.GeneralItem title="ISBN" value={ISBN} />
+          <Book.GeneralItem title="ISBN-10" value={ISBN10} />
+          <Book.GeneralItem title="ISBN-13" value={ISBN13} />
           <Book.GeneralItem title="Title" value={title} />
           <Book.GeneralItem title="Authors" value={authors} />
-          <Book.GeneralItem title="Genres" value={genres} />
+          <Book.GeneralItem title="Categories" value={categories} />
         </div>
         <div>
           <img
@@ -46,11 +47,12 @@ export const General = ({ ISBN, title, authors, genres, isRead, imgSrc, onRemove
 };
 
 General.propTypes = {
-  ISBN: PropTypes.string.isRequired,
+  ISBN10: PropTypes.string,
+  ISBN13: PropTypes.string,
   title: PropTypes.string.isRequired,
   authors: PropTypes.array.isRequired,
-  genres: PropTypes.array.isRequired,
-  isRead: PropTypes.bool.isRequired,
+  categories: PropTypes.array.isRequired,
+  read: PropTypes.bool.isRequired,
   imgSrc: PropTypes.string,
   onRemoveClick: PropTypes.func,
 };

@@ -15,6 +15,7 @@ export const AddBookView = () => {
 
   function handleAddBookConfirm() {
     addBook(data); // Add book (post)
+    console.log(data)
     CTAModal.close();
   }
 
@@ -28,7 +29,7 @@ export const AddBookView = () => {
     if (data) {
       CTAModal.open({
         title: "Book found!",
-        text: `"${data.title}" has been found. Add to library?`,
+        text: `"${data.Title}" has been found. Add to library?`,
       });
     } else {
       DialogModal.open({

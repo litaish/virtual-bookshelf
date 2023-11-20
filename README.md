@@ -21,11 +21,8 @@ Currently, two official plugins are available:
 - Html5-QRCode
 
 ### Todo:
-
-- Resize images on client
-- State management
-- Add CRUD operations
-- Add scanner component
+- Handle pagination for books list
 
 ### Issues:
-Uploading an image of a book barcode seems to have issues. Scanning via camera works (EAN 13). Probably related to camera quality.
+- Uploading an image of a book barcode seems to have issues. Scanning via camera works (EAN 13). Probably related to camera quality.
+- Animations seem laggy on Chrome.

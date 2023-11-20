@@ -24,6 +24,7 @@ export const BookView = () => {
     // DialogModal.open({ text: "Data saved succesfully!", isErrorModal: false });
     // if error
     // DialogModal.open({ text: "There has been an error trying to complete your request.", isErrorModal: true });
+    console.log(data)
   };
 
   return (
@@ -38,9 +39,10 @@ export const BookView = () => {
 
       {isError && <UI.ErrorAlert errorMessage={error.message} />}
 
+
       {data && (
         <>
-          <Book.General ISBN={data.ISBN} title={data.title} authors={data.authors} genres={data.genres} isRead={data.isRead} imgSrc={data.imgSrc} onRemoveClick={handleRemoveClick}/>
+          <Book.General ISBN10={data.isbN10} ISBN13={data.isbN13} title={data.title} authors={data.authors} categories={data.categories} read={data.read} imgSrc={data.imgSrc} onRemoveClick={handleRemoveClick}/>
           <Book.GiveARating initialRating={data.rating} />
           <Book.Notes initialNote={data.notes} />
           <Buttons.ActionButton

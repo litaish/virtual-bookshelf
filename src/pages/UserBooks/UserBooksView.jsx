@@ -47,7 +47,7 @@ export const UserBooksView = () => {
                   : item.title.toLowerCase().includes(search.toLowerCase());
               })
               .map(book => {
-                return <UserBooks.Book key={book.ISBN} book={book} />;
+                return <UserBooks.Book key={book.id} book={book} />;
               })}
           </div>
         </>
