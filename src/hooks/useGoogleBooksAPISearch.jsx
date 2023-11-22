@@ -1,6 +1,7 @@
 import { useQuery } from "react-query";
 import axios from "axios";
 
+// accept params as object
 export function useGoogleBooksAPISearch(searchTerm, onSuccess, onError) {
     return useQuery(
         ['google_books_api_search', searchTerm],
@@ -25,7 +26,6 @@ export function useGoogleBooksAPISearch(searchTerm, onSuccess, onError) {
                         Read: false,
                         Authors: volumeInfo?.authors.map(author => ({ Name: author })),
                         Categories: volumeInfo?.categories.map(category => ({ Name: category })),
-                        // img: volumeInfo?.imageLinks?.thumbnail,
                     };
                 } else {
                     return null;

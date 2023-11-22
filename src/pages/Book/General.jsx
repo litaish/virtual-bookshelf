@@ -3,10 +3,15 @@ import { Buttons, Layout } from '../../components/index';
 import PropTypes from 'prop-types';
 import Icon from '@mdi/react';
 import { mdiRead, mdiBookRemoveMultiple } from '@mdi/js';
+import { useState } from 'react';
 
-export const General = ({ ISBN10, ISBN13, title, authors, categories, read, imgSrc, onRemoveClick }) => {
-  // const { openCTAModal } = useCTAModal();
-  const changeReadStatusText = read ? 'Mark as unread' : 'Mark as read';
+export const General = ({ ISBN10, ISBN13, title, authors, categories, read, imgSrc, onReadClick, onRemoveClick }) => {
+  const [isRead, setIsRead] = useState(read);
+
+  const handleReadClick = () => {
+    onReadClick();
+    setIsRead((prev) => !prev);
+  }
 
   return (
     <section className="flex flex-col gap-6">
@@ -29,7 +34,8 @@ export const General = ({ ISBN10, ISBN13, title, authors, categories, read, imgS
       </div>
       <div className="flex gap-12">
         <Buttons.ActionButton
-          text={changeReadStatusText}
+          onClick={handleReadClick}
+          text={isRead ? 'Mark as unread' : 'Mark as read'}
           type="button"
           className="bg-blue-500 hover:bg-blue-600"
           icon={<Icon path={mdiRead} size={1.2} />}
@@ -54,5 +60,6 @@ General.propTypes = {
   categories: PropTypes.array.isRequired,
   read: PropTypes.bool.isRequired,
   imgSrc: PropTypes.string,
+  onReadClick: PropTypes.func,
   onRemoveClick: PropTypes.func,
 };

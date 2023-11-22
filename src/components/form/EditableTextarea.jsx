@@ -3,13 +3,16 @@ import { useState } from 'react';
 import Icon from '@mdi/react';
 import { mdiBookEditOutline } from '@mdi/js';
 
-export const EditableTextarea = ({ label, id, placeholder, name, initialValue }) => {
+export const EditableTextarea = ({ label, id, placeholder, name, initialValue, onChange }) => {
   const [isEditable, setIsEditable] = useState(true);
   const [value, setValue] = useState(initialValue);
 
   const handleToggleEdit = () => setIsEditable(!isEditable);
 
-  const handleChange = e => setValue(e.target.value);
+  const handleChange = (e) => {
+    setValue(e.target.value);
+    onChange(e.target.value);
+  }
 
   const textareaPlaceholder = isEditable ? '' : placeholder;
 
@@ -48,4 +51,5 @@ EditableTextarea.propTypes = {
   placeholder: PropTypes.string,
   name: PropTypes.string.isRequired,
   initialValue: PropTypes.string,
+  onChange: PropTypes.func,
 };
