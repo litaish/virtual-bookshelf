@@ -4,14 +4,14 @@ import Icon from '@mdi/react';
 import { mdiPlus } from '@mdi/js';
 import styles from './UserBooks.module.css';
 import { useState } from 'react';
-import { useBookData } from '../../hooks/index';
+import useBooks from '../../hooks/useBooks';
 
 export const UserBooksView = () => {
   const [search, setSearch] = useState('');
 
   const handleSearchChange = e => setSearch(e.target.value);
 
-  const { isLoading, data, isError, error } = useBookData();
+  const { data, isLoading, isError, error } = useBooks();
 
   return (
     <main className="p-8 flex flex-col gap-8 2xl:px-60">

@@ -3,24 +3,26 @@ import { Book } from '../index';
 import { useParams } from 'react-router-dom';
 import Icon from '@mdi/react';
 import { mdiContentSaveAll } from '@mdi/js';
-import { useCTAModal, useDialogModal, useBookData } from '../../hooks/index';
+import { useCTAModal, useDialogModal } from '../../hooks/index';
 import { useState } from 'react';
-import { useDeleteBookData, useUpdateBookData } from '../../hooks/useBookData';
+import useBook from '../../hooks/useBook';
+import useDeleteBook from '../../hooks/useDeleteBook';
+import useUpdateBook from '../../hooks/useUpdateBook';
 
 export const BookView = () => {
   const { id } = useParams();
   const CTAModal = useCTAModal();
   const DialogModal = useDialogModal();
 
-  const [book, setBook] = useState({});
-
   const handleDataLoadSuccess = (data) => {
     setBook(data);
   }
 
-  const { isLoading, data, isError, error } = useBookData({ id: id, onSuccess: handleDataLoadSuccess });
-  const { mutate: updateBook } = useUpdateBookData();
-  const { mutate: deleteBook } = useDeleteBookData();
+  const { data, isLoading, isError, error } = useBook(id, handleDataLoadSuccess);
+  const { mutate: deleteBook } = useDeleteBook();
+  const { mutate: updateBook } = useUpdateBook();
+
+  const [book, setBook] = useState();
 
   const handleChangeRead = () => {
     setBook((prev) => ({
@@ -46,16 +48,18 @@ export const BookView = () => {
   const handleRemoveClick = () => CTAModal.open({ title: "Delete this book?", text: "This book will be permenetly deleted." })
 
   const handleRemoveConfirm = () => {
+    deleteBook(id);
     console.log(`Confirmed! Removed book ${id}`);
     CTAModal.close();
   }
 
   const handleSaveClick = () => {
+    console.log(book)
+    updateBook(id, { id: 1, title: "a" })
     // if success
     // DialogModal.open({ text: "Data saved succesfully!", isErrorModal: false });
     // if error
     // DialogModal.open({ text: "There has been an error trying to complete your request.", isErrorModal: true });
-    console.log(book)
   };
 
   return (

@@ -24,6 +24,7 @@ Currently, two official plugins are available:
 - Handle pagination for books list
 - For general information section, check if each row has undefined values, since some may not have information
 - Check if Google Books API has unique identifications for authors and categories
+- Fix imports for hooks
 
 ### Issues:
 - Uploading an image of a book barcode seems to have issues. Scanning via camera works (EAN 13). Probably related to camera quality.

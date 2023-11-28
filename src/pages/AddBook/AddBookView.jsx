@@ -2,7 +2,8 @@ import { Layout } from "../../components/index";
 import { AddBook } from '../index';
 import { useState } from "react";
 import { UI } from "../../components/index";
-import { useGoogleBooksAPISearch, useAddBookData, useCTAModal, useDialogModal } from "../../hooks/index";
+import { useGoogleBooksAPISearch, useCTAModal, useDialogModal } from "../../hooks/index";
+import useAddBook from "../../hooks/useAddBook";
 
 export const AddBookView = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -11,7 +12,7 @@ export const AddBookView = () => {
 
   const { isLoading, isFetching, refetch, data } = useGoogleBooksAPISearch(searchTerm, handleSuccess, handleError); 
 
-  const { mutate: addBook } = useAddBookData();
+  const { mutate: addBook } = useAddBook();
 
   function handleAddBookConfirm() {
     addBook(data); // Add book (post)
