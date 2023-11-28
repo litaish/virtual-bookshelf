@@ -20,7 +20,7 @@ export const BookView = () => {
 
   const { data, isLoading, isError, error } = useBook(id, handleDataLoadSuccess);
   const { mutate: deleteBook } = useDeleteBook();
-  const { mutate: updateBook } = useUpdateBook();
+  const { mutate: updateBook } = useUpdateBook()
 
   const [book, setBook] = useState();
 
@@ -55,8 +55,8 @@ export const BookView = () => {
   }
 
   const handleSaveClick = () => {
-    console.log(book)
-    updateBook(id, { id: 1, title: "a" })
+    updateBook({ id: id, body: book })
+
     // if success
     // DialogModal.open({ text: "Data saved succesfully!", isErrorModal: false });
     // if error
