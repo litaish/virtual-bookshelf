@@ -50,6 +50,7 @@ export const BookView = () => {
   const handleRemoveConfirm = () => {
     deleteBook(id);
     console.log(`Confirmed! Removed book ${id}`);
+    // check for errors and successs
     CTAModal.close();
   }
 
@@ -77,9 +78,9 @@ export const BookView = () => {
 
       {data && (
         <>
-          <Book.General ISBN10={data.isbN10} ISBN13={data.isbN13} title={data.title} authors={data.authors} categories={data.categories} read={data.read} imgSrc={data.imgSrc} onReadClick={handleChangeRead} onRemoveClick={handleRemoveClick}/>
-          <Book.GiveARating initialRating={data.rating} onChange={handleChangeRating} />
-          <Book.Notes initialNote={data.notes} onChange={handleChangeNotes} />
+          <Book.General ISBN10={book.isbN10} ISBN13={book.isbN13} title={book.title} authors={book.authors} categories={book.categories} read={book.read} imgSrc={book.imgSrc} onReadClick={handleChangeRead} onRemoveClick={handleRemoveClick}/>
+          <Book.GiveARating initialRating={book.rating} onChange={handleChangeRating} />
+          <Book.Notes initialNote={book.notes} onChange={handleChangeNotes} />
           <Buttons.ActionButton
             onClick={handleSaveClick}
             text="Save Data"

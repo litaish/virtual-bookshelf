@@ -3,16 +3,8 @@ import { Buttons, Layout } from '../../components/index';
 import PropTypes from 'prop-types';
 import Icon from '@mdi/react';
 import { mdiRead, mdiBookRemoveMultiple } from '@mdi/js';
-import { useState } from 'react';
 
 export const General = ({ ISBN10, ISBN13, title, authors, categories, read, imgSrc, onReadClick, onRemoveClick }) => {
-  const [isRead, setIsRead] = useState(read);
-
-  const handleReadClick = () => {
-    onReadClick();
-    setIsRead((prev) => !prev);
-  }
-
   return (
     <section className="flex flex-col gap-6">
       <Layout.SecondaryHeader text="General Information"/>
@@ -34,8 +26,8 @@ export const General = ({ ISBN10, ISBN13, title, authors, categories, read, imgS
       </div>
       <div className="flex gap-12">
         <Buttons.ActionButton
-          onClick={handleReadClick}
-          text={isRead ? 'Mark as unread' : 'Mark as read'}
+          onClick={onReadClick}
+          text={read ? 'Mark as unread' : 'Mark as read'}
           type="button"
           className="bg-blue-500 hover:bg-blue-600"
           icon={<Icon path={mdiRead} size={1.2} />}
